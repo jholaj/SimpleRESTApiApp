@@ -5,15 +5,16 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const UserModel = require('./models/userModel');
+const { logEvent } = require('./utils/logger');
 
 // connect db
 const connectToDatabase = async () => {
   try {
     const connection = await mysql.createConnection(config);
-    console.log('Connecting to database was succesful with ID: ' + connection.threadId);
+    logEvent('Connecting to database was succesful with ID: ' + connection.threadId, true);
     return connection;
   } catch (err) {
-    console.error('Error connecting to database:', err.stack);
+    logEvent('Error connecting to database:' + err.stack, false);
     throw err;
   }
 };
@@ -23,7 +24,7 @@ app.use(async (req, res, next) => {
     req.connection = await connectToDatabase();
     next();
   } catch (err) {
-    console.error('Error connecting to database:', err.stack);
+    logEvent('Error connecting to database:', err.stack, false);
     res.status(500).send('Error connecting to database');
   }
 });
@@ -42,13 +43,14 @@ app.get('/', (req, res) => {
 // starting server
 (async () => {
   try {
+      logEvent('App has been started', true);
       // creating admin
       await UserModel.createAdminIfNotExists();
-
+      logEvent('Admin user was created', true);
       app.listen(port, () => {
           console.log(`Server is running on port ${port}`);
       });
   } catch (error) {
-      console.error('Error during server initialization:', error);
+      logEvent('Error during server initialization: ' + error, false);
   }
 })();

@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 class UserModel extends GenericModels {
     constructor() {
-        super('Users'); // Table name
+        super('users'); // Table name
     }
 
     async create(data) {
@@ -52,7 +52,6 @@ class UserModel extends GenericModels {
                     password: hashedPassword,
                     role: 'admin'
                 });
-                console.log("Created admin user...")
             }
         } catch (error) {
             throw error;

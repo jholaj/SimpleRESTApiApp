@@ -1,6 +1,7 @@
 module.exports = {
-    host: 'host',
-    user: 'user',
-    password: 'password',
-    database: 'database'
+    host: 'db',
+    port: 3306,
+    user: 'root',
+    password: 'root',
+    database: 'comverga'
 };

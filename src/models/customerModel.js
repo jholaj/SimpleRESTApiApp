@@ -2,7 +2,7 @@ const GenericModels = require('./genericModels');
 
 class CustomerModel extends GenericModels {
     constructor() {
-        super('Customers'); // Table name
+        super('customers'); // Table name
     }
 }
 
