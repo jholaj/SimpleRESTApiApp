@@ -36,6 +36,7 @@ docker-compose up
 #### All
 ```bash
 curl -H "Authorization: Bearer YOUR_JWT_TOKEN" http://localhost:3000/customers
+```
 #### Specific
 ```bash
 curl -H "Authorization: Bearer YOUR_JWT_TOKEN" http://localhost:3000/customers/1
