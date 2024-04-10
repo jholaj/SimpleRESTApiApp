@@ -7,6 +7,7 @@ This application is a customer records management tool providing an API interfac
 - **Customer Records Management**: Ability to add, update, view, and delete customer records.
 - **Service Management**: Capability to manage provided services and associate them with specific customers.
 - **Authentication and Authorization**: API security using JWT token, allowing authorized access only for registered users.
+- **Logging**: Implementation of logging functionality to record important events and errors within the application. Logs are stored in a centralized file for easy monitoring and troubleshooting.
 
 ## Installation
 
